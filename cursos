@@ -1,0 +1,27 @@
+#!/bin/bash
+# (@)/cursos
+# A very simple catalog of courses to do.
+# Type "cursos registrar #codigo #nome" to add a course to the list, or
+# simply type "cursos listar" to obtain a list of the courses to do.
+
+LIST_OF_COURSES=~/.courses_to_do.txt
+
+# If there is no command line parameter ($#), there is 
+# a problem, so ask about what they are talking.
+if [ $# -lt 1 ] ; then
+	echo "Do you want a list of the courses to do? "
+	exit 1
+fi
+
+# Do you want to add a nem course?
+if [ $1 = "registrar" ] ; then
+	echo "$2: $3" >> $LIST_OF_COURSES
+	echo "Curso $3 adicionado"
+	exit 0
+fi
+
+
+if [ $1 = "listar" ] ; then
+	cat $LIST_OF_COURSES
+fi
+
